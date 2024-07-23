@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return redirect()->route('admin.home');
+    return redirect()->route('products.index');
 });
 
 
@@ -18,9 +18,6 @@ Route::get('admin/login', function () {
 Route::post('admin/auth', [UserController::class, 'authenticate'])->name('auth');
 Route::prefix('admin')->middleware('auth')->group(function () {
 
-    Route::get('home', function () {
-        return view('admin.home');
-    });
 
     Route::get('products', function () {
         return view('admin.products');
