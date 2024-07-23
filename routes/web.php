@@ -34,9 +34,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     })->name('categories.index');
     Route::get('categories/list', [CategoryController::class,'list'])->name('categories.list');
     Route::get('categories/create', [CategoryController::class,'create'])->name('categories.create');
-    Route::get('categories/store', [CategoryController::class,'store'])->name('categories.store');
-    Route::get('categories/edit', [CategoryController::class,'edit'])->name('categories.edit');
-    Route::get('categories/update', [CategoryController::class,'update'])->name('categories.update');
+    Route::post('categories/store', [CategoryController::class,'store'])->name('categories.store');
+    Route::get('categories/edit/{id}', [CategoryController::class,'edit'])->name('categories.edit');
+    Route::post('categories/update/{category}', [CategoryController::class,'update'])->name('categories.update');
 
     Route::get('/logout', function () {
         Auth::logout();

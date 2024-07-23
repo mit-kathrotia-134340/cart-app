@@ -55,8 +55,8 @@
         <h3 class="sidebar-heading">CartApp Management System</h3>
         <div class="list-group list-group-flush text-center">
 
-            <a href="{{ route('products.index') }}" class="list-group-item list-group-item-action active">Products</a>
-            <a href="{{ route('categories.index') }}" class="list-group-item list-group-item-action">Categories</a>
+            <a href="{{ route('products.index') }}" class="list-group-item list-group-item-action">Products</a>
+            <a href="{{ route('categories.index') }}" class="list-group-item list-group-item-action active">Categories</a>
             <a href="{{ route('logout') }}" class="list-group-item list-group-item-action">Log Out</a>
         </div>
     </div>
@@ -64,59 +64,28 @@
     <div class="content">
         <div class="container">
 
-            <h2>Edit Product</h2>
-            <form id="product-edit-form" method="POST" data-id="{{ $product->id }}">
+            <h2>Add Category</h2>
+            <form id="category-form" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="title">Title:</label>
-                    <input type="text" id="title" name="title" class="form-control" required value="{{ $product->title ?? '' }}">
+                    <input type="text" id="title" name="title" class="form-control" required>
                     <p for="title" class="validation text-danger" id="title-error"></p>
 
                 </div>
 
                 <div class="form-group">
                     <label for="description">Description:</label>
-                    <textarea id="description" name="description" class="form-control" required>{{ $product->description ?? '' }}</textarea>
+                    <textarea id="description" name="description" class="form-control" required></textarea>
                     <p for="description" class="validation text-danger" id="description-error"></p>
-
-                </div>
-
-                <div class="form-group">
-                    <label for="categories">Categories:</label>
-                    <select id="categories" name="categories[]" class="form-control select2" multiple="multiple" required>
-                        @foreach ($categories ?? [] as $category)
-                            @if (in_array($category->id, $product->categories->pluck('id')->toArray()))
-                            <option value="{{ $category->id }}" selected>{{ $category->title }}</option>
-
-                            @else
-
-                            <option value="{{ $category->id }}">{{ $category->title }}</option>
-                            @endif
-                        @endforeach
-                    </select>
-                    <p for="categories" class="validation text-danger" id="categories-error"></p>
-
-                </div>
-
-                <div class="form-group">
-                    <label for="price">Price:</label>
-                    <input type="text" id="price" name="price" class="form-control" required value="{{ $product->price }}">
-                    <p for="price" class="validation text-danger" id="price-error"></p>
-
-                </div>
-
-                <div class="form-group">
-                    <label for="qty">QTY:</label>
-                    <input type="number" id="qty" name="qty" class="form-control" required value="{{ $product->quantity ?? '' }}">
-                    <p for="qty" class="validation text-danger" id="qty-error"></p>
 
                 </div>
 
                 <div class="form-group">
                     <label for="status">Status:</label>
                     <select id="status" name="status" class="form-control" required>
-                        <option value="active" {{ $product->status == 'active' ? 'selected' : '' }}>Active</option>
-                        <option value="inactive" {{ $product->status == 'inactive' ? 'selected' : '' }}>Inactive</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
                     </select>
                     <p for="status" class="validation text-danger" id="status-error"></p>
 
@@ -135,12 +104,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('.select2').select2();
-        });
-    </script>
-    <script src="{{asset('/js/admin/products.js')}}"></script>
+    <script src="{{asset('/js/admin/categories.js')}}"></script>
 </body>
 
 </html>

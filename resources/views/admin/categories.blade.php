@@ -8,6 +8,8 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+
     <style>
         .sidebar {
             position: fixed;
@@ -54,20 +56,38 @@
 
             <a href="{{ route('products.index') }}" class="list-group-item list-group-item-action">Products</a>
             <a href="{{ route('categories.index') }}" class="list-group-item list-group-item-action active">Categories</a>
+            <a href="{{ route('logout') }}" class="list-group-item list-group-item-action">Log Out</a>
+
         </div>
     </div>
 
     <div class="content">
         <div class="container">
 
-            <h2>Home</h2>
-            <p>Welcome to the Home page.</p>
+            <h2>Categories</h2>
+            <div>
+                <a class="btn btn-info btn-sm add-category" href="{{ route('categories.create') }}" >Add Category</a>
+            </div>
+            <table id="categories-table" class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Image</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+            </table>
         </div>
     </div>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="{{asset('/js/admin/categories.js')}}"></script>
 </body>
 
 </html>

@@ -57,6 +57,7 @@
 
             <a href="{{ route('products.index') }}" class="list-group-item list-group-item-action active">Products</a>
             <a href="{{ route('categories.index') }}" class="list-group-item list-group-item-action">Categories</a>
+            <a href="{{ route('logout') }}" class="list-group-item list-group-item-action">Log Out</a>
         </div>
     </div>
 
